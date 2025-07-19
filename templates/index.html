@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>💼 Salary Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1> Salary Predictor</h1>
+    <div class="internship-info">
+        <div class="internship-card">
+            <div class="company-logo">
+                <img src="{{ url_for('static', filename='edunet.png') }}" alt="Company Logo">
+            </div>
+            <div class="internship-details">
+                <h3>🎓 Internship Project</h3>
+                <p><strong>Company:</strong> Edunet Foundation in collaboration with AICTE and IBM</p>
+                <p><strong>Intern:</strong> Mohd Kashif</p>
+                <p><strong>Project:</strong> Machine Learning Salary Predictor</p>
+                <p><strong>Duration:</strong> 6 weeks</p>
+            </div>
+            <div class="company-badge">
+                <img src="{{ url_for('static', filename='ibm.jpg') }}" alt="Internship Badge">
+            </div>
+        </div>
+    </div>
+
+    <!-- Salary Prediction Form -->
+    <div class="form-container">
+        <form method="POST" action="/" novalidate>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="education">🎓 Education Level</label>
+                    <select name="education" id="education" required>
+                        <option value="">--Select Education--</option>
+                        <option value="High School">High School</option>
+                        <option value="Bachelor">Bachelor's Degree</option>
+                        <option value="Master">Master's Degree</option>
+                        <option value="PhD">PhD</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="experience">💼 Experience (in Years)</label>
+                    <input type="number" name="experience" id="experience" min="0" max="70" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">📍 Location</label>
+                    <select name="location" id="location" required>
+                        <option value="">--Select Location--</option>
+                        <option value="Suburban">Suburban</option>
+                        <option value="Rural">Rural</option>
+                        <option value="Urban">Urban</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="job_title">👔 Job Title</label>
+                    <select name="job_title" id="job_title" required>
+                        <option value="">--Select Job Title--</option>
+                        <option value="Director">Director</option>
+                        <option value="Analyst">Analyst</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Engineer">Engineer</option>
+                        <option value="Architect">Architect</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Data Scientist">Data Scientist</option>
+                        <option value="Researcher">Researcher</option>
+                        <option value="Consultant">Consultant</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Support">Support</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">🍰 Age</label>
+                    <input type="number" name="age" id="age" min="18" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">👤 Gender</label>
+                    <select name="gender" id="gender" required>
+                        <option value="">--Select Gender--</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">🔮 Predict My Salary</button>
+        </form>
+
+        {% if predicted_salary %}
+        <div class="result" id="result">
+            <h2>✅ Predicted Salary</h2>
+            <div class="salary-amount">
+                ₹{{ "{:,.0f}".format(predicted_salary) }}
+            </div>
+            <p class="result-description">Per Month Based on your profile and market analysis</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Social Media Links Section -->
+    <div class="social-links">
+        <h3>Learn more about the developer :- Mohd Kashif</h3>
+        <div class="social-buttons">
+            <button class="social-btn" onclick="window.open('https://www.linkedin.com/in/mohd-kashif-9560md/', '_blank')">
+                <img src="{{ url_for('static', filename='linkedin.jpg') }}" alt="LinkedIn">
+            </button>
+            <button class="social-btn" onclick="window.open('https://github.com/kashif7230', '_blank')">
+                <img src="{{ url_for('static', filename='github.jpg') }}" alt="GitHub">
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
